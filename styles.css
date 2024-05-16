@@ -38,12 +38,12 @@ header {
 }
 
 section {
-    padding: 50px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 .container {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding: 20px 0;
 }
@@ -52,9 +52,9 @@ section {
 #product-list .product {
     display: inline-block;
     vertical-align: top;
-    width: 25%;
+    width: 40%;
     margin: 10px;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -62,7 +62,7 @@ section {
 
 #product-list .product img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
@@ -78,7 +78,7 @@ section {
     background-color: #524e4e;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 5
 }
 
