@@ -51,7 +51,6 @@ section {
     padding: 20px 0;
 }
 
-
 #product-list .product {
     display: flex;
     flex-direction: column;
@@ -59,10 +58,13 @@ section {
     text-align: center;
     justify-content: center;
     vertical-align: top;
-    margin: 5px;
+    width: 30%;
+    margin: 10px;
+    padding: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box
+    box-sizing: border-box;
+    min-height: 600px;
 }
 
 
@@ -74,11 +76,11 @@ section {
 }
 
 #product-list .product h3 {
-    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 #product-list .product p {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 #product-list .product button {
@@ -148,5 +150,19 @@ footer {
 
     .nav-list li a {
         color: rgb(196, 61, 61);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #product-list .product {
+        flex-basis: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #product-list .product {
+        flex-basis: calc(100% - 20px);
+        max-width: calc(100% - 20px);
     }
 }
