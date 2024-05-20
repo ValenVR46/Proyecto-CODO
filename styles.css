@@ -9,11 +9,12 @@ body {
     width: 100%;
 }
 
+/* Header Styles */
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
     background-color: #000000;
 }
 
@@ -51,6 +52,7 @@ section {
     padding: 20px 0;
 }
 
+/* Product List Styles */
 #product-list .product {
     display: flex;
     flex-direction: column;
@@ -58,16 +60,14 @@ section {
     text-align: center;
     justify-content: center;
     vertical-align: top;
-    width: 30%;
-    margin: 10px;
-    padding: 30px;
+    width: 100%;
+    margin: 5px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    min-height: 600px;
+    min-height: 700px;
 }
-
-
 
 #product-list .product img {
     width: 100%;
@@ -94,17 +94,83 @@ section {
     cursor: pointer;
 }
 
-
+/* Footer Styles */
 footer {
     width: 100%;
-    background-color: #111010;
-    color: #fff;
+    background-color: #000000;
+    color: rgb(196, 61, 61);
     text-align: center;
     padding: 20px 0;
 }
 
-@media screen and (max-width: 550px) {
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
 
+.footer-section {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+.footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: rgb(196, 61, 61);
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-section.contact p {
+    margin: 5px 0;
+}
+
+.footer-section.contact i {
+    margin-right: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .footer-section {
+        flex-basis: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
     .abrir-menu,
     .cerrar-menu {
         display: block;
@@ -164,5 +230,43 @@ footer {
     #product-list .product {
         flex-basis: calc(100% - 20px);
         max-width: calc(100% - 20px);
+    }
+}
+
+/* Sucursal Information and Map Styles */
+.container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.sucursal-info,
+.sucursal-map {
+    flex-basis: 48%;
+    margin: 1%;
+    box-sizing: border-box;
+}
+
+.sucursal-info {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.sucursal-info h1,
+.sucursal-info h2,
+.sucursal-info p {
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .container2 {
+        flex-direction: column;
+    }
+
+    .sucursal-info,
+    .sucursal-map {
+        flex-basis: 100%;
+        margin: 0 0 20px 0;
     }
 }
