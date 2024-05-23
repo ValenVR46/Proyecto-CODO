@@ -2,11 +2,126 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    vertical-align: baseline;
     font-family: sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Aquí definimos las Custom properties */
+:root {
+    --negro: #0d0d0d;
+    --blanco: #ececec;
+    --sombra-ppal: #c9c9c9;
+    --sombra-sec: #ffffff;
+    --borde-negro: #00000050;
+    --marcado: rgb(127, 195, 255);
+    /* Tipografía */
+    --tipo-principal: Helvetica, Arial, sans-serif;
+}
+
+/* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+    --negro: #000000;
+    --blanco: #bdbdbd;
+    --sombra-ppal: #242424;
+    --sombra-sec: #3c3c3c;
+    --borde-negro: #FFFFFF50;
+    }
+}
+
+/* General Styles */
 body {
     width: 100%;
+    font-family: var(--tipo-principal);
+    font-size: 100%;
+    line-height: 1.4em;
+    display: grid;    
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    background-color: var(--blanco);
+    color: var(--negro);
+    -webkit-hyphens: auto;
+            hyphens: auto;
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+    -webkit-hyphens: auto;
+            hyphens: auto;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+p a {
+    display: inline;
+}
+
+li {
+    list-style-type: none;
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+img {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+
+::selection {
+    background-color: var(--negro);
+    color: var(--blanco);
+}
+
+form, input, textarea, select, button {
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-hyphens: auto;
+            hyphens: auto;
+    background-color: transparent;
+    display: block;
 }
 
 /* Header Styles */
@@ -38,16 +153,18 @@ header {
     display: none;
 }
 
+/* Section Styles */
 section {
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
 }
 
+/* Container Styles */
 .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;   
-    width: 70%;
+    gap: 15px;
+    width: 80%;
     margin: auto;
     padding: 20px 0;
 }
@@ -63,7 +180,7 @@ section {
     width: 100%;
     margin: 5px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #292929;
     border-radius: 5px;
     box-sizing: border-box;
     min-height: 700px;
@@ -111,17 +228,18 @@ footer {
 }
 
 .footer-section {
-    flex-basis: 30%;
+    flex-basis: 33%;
     margin-bottom: 20px;
 }
 
 .footer-section h2 {
     font-size: 18px;
     margin-bottom: 10px;
+    color: rgb(196, 61, 61);
 }
 
 .footer-section p, .footer-section ul {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6;
 }
 
@@ -168,11 +286,14 @@ footer {
     .footer-section {
         flex-basis: 100%;
     }
+    #product-list .product {
+        flex-basis: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
 }
 
 @media screen and (max-width: 550px) {
-    .abrir-menu,
-    .cerrar-menu {
+    .abrir-menu, .cerrar-menu {
         display: block;
         border: 0;
         font-size: 1.25rem;
@@ -205,7 +326,7 @@ footer {
     }
 
     .nav.visible {
-        opacity: 10;
+        opacity: 1;
         visibility: visible;
     }
 
@@ -217,16 +338,7 @@ footer {
     .nav-list li a {
         color: rgb(196, 61, 61);
     }
-}
 
-@media screen and (max-width: 768px) {
-    #product-list .product {
-        flex-basis: calc(50% - 20px);
-        max-width: calc(50% - 20px);
-    }
-}
-
-@media screen and (max-width: 550px) {
     #product-list .product {
         flex-basis: calc(100% - 20px);
         max-width: calc(100% - 20px);
@@ -240,23 +352,21 @@ footer {
     justify-content: space-between;
 }
 
-.sucursal-info,
-.sucursal-map {
+.sucursal-info, .sucursal-map {
     flex-basis: 48%;
     margin: 1%;
     box-sizing: border-box;
+    border: 1px solid #292929;
+
 }
 
 .sucursal-info {
-    background-color: #f9f9f9;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #292929;
 }
 
-.sucursal-info h1,
-.sucursal-info h2,
-.sucursal-info p {
-    margin: 10px 0;
+.sucursal-info h1, .sucursal-info h2, .sucursal-info p {
+    margin: 10px ;
 }
 
 @media (max-width: 768px) {
@@ -264,9 +374,72 @@ footer {
         flex-direction: column;
     }
 
-    .sucursal-info,
-    .sucursal-map {
+    .sucursal-info, .sucursal-map {
         flex-basis: 100%;
         margin: 0 0 20px 0;
     }
+}
+
+/* Carrousel Styles */
+.carrousel {
+  width: 100%;
+  max-width: 120em;
+  padding: 2em;
+  color: var(--negro);
+  transition: all 4s ease;
+  border-radius: 0.5em;
+  background-color: var(--blanco);
+  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  overflow: hidden;
+}
+
+.carrousel .grande {
+  width: 700%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--negro);
+  transition: all 4s ease;
+  border-radius: 0.5em;
+  background-color: var(--blanco);
+  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+  padding: 2em;
+  transition: all 0.5s ease;
+  transform: translateX(0%);
+}
+
+.carrousel .img {
+  width: calc( 100% / 7 - 1em);
+  min-height: 10vh;
+  color: var(--negro);
+  transition: all 4s ease;
+  border-radius: 0.5em;
+  background-color: var(--blanco);
+  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+}
+
+.carrousel .puntos {
+  width: 100%;
+  margin: 1em 0 0; 
+  padding: 0.4em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrousel .punto {
+  width: 0.7em;
+  height: 0.7em;
+  margin: 1em 1em 0;
+  color: var(--negro);
+  transition: all 0.4s ease;
+  border-radius: 1em;
+  background-color: var(--blanco);
+  box-shadow: 0.6em 0.6em 1.1em var(--sombra-ppal), -0.6em -0.6em 1.1em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+}
+
+.carrousel .punto.activo {
+  background-color: rgb(207, 186, 186);
 }
