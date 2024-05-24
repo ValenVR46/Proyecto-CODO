@@ -391,37 +391,37 @@ footer {
 .carrousel {
   width: 100%;
   max-width: 120em;
-  padding: 2em;
+  padding: 1em;
   color: var(--negro);
-  transition: all 4s ease;
-  border-radius: 0.5em;
+  border-radius: 0em;
   background-color: var(--blanco);
   box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
   overflow: hidden;
+  position: relative;
 }
 
 .carrousel .grande {
-  width: 700%;
+  width: 700%; /* Ajusta el ancho al 700% para las 7 imágenes */
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   color: var(--negro);
-  transition: all 4s ease;
-  border-radius: 0.5em;
+  transition: transform 0.5s ease; /* Suaviza la transición entre imágenes */
+  border-radius: 0em;
   background-color: var(--blanco);
   box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
-  padding: 2em;
-  transition: all 0.5s ease;
-  transform: translateX(0%);
+  padding: 1em;
 }
 
 .carrousel .img {
-  width: calc( 100% / 7 - 1em);
+  width: calc( 100% / 7 - 1.7em);
+  flex: 0 0 100% / 7;
   min-height: 10vh;
   color: var(--negro);
   transition: all 4s ease;
   border-radius: 0.5em;
+  object-fit: cover; /* Mantener el aspecto de las imágenes */
   background-color: var(--blanco);
   box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
 }
