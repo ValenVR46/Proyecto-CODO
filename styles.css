@@ -1,9 +1,12 @@
+/* Importar la fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     vertical-align: baseline;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 html {
@@ -19,7 +22,7 @@ html {
     --borde-negro: #00000050;
     --marcado: rgb(127, 195, 255);
     /* Tipografía */
-    --tipo-principal: Helvetica, Arial, sans-serif;
+    --tipo-principal: 'Roboto', sans-serif;
 }
 
 /* Las adaptamos al modo oscuro */
@@ -68,7 +71,7 @@ strong {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 0.5em;
 }
 
@@ -78,7 +81,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 1em;
 }
 
@@ -146,18 +149,20 @@ header {
 }
 
 .logo {
-    max-width: 9.5rem;
+    max-width: 10rem;
 }
 
 .nav-list {
     list-style-type: none;
     display: flex;
-    gap: 2.3em;
+    gap: 2.5em;
 }
 
 .nav-list li a {
     text-decoration: none;
     color: rgb(196, 61, 61);
+    font-size: 1.3rem;
+    /* Tamaño de fuente por defecto para el menú */
 }
 
 .abrir-menu,
@@ -174,8 +179,8 @@ section {
 /* Container Styles */
 .container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     width: 80%;
     margin: auto;
     padding: 20px 0;
@@ -309,6 +314,11 @@ footer {
         flex-basis: calc(50% - 20px);
         max-width: calc(50% - 20px);
     }
+
+    .nav-list li a {
+        font-size: 0.9rem;
+        /* Tamaño de fuente para pantallas medianas */
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -358,6 +368,8 @@ footer {
 
     .nav-list li a {
         color: rgb(196, 61, 61);
+        font-size: 0.8rem;
+        /* Tamaño de fuente para pantallas pequeñas */
     }
 
     #product-list .product {
