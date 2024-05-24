@@ -28,11 +28,11 @@ html {
 /* Las adaptamos al modo oscuro */
 @media (prefers-color-scheme: dark) {
     :root {
-    --negro: #000000;
-    --blanco: #bdbdbd;
-    --sombra-ppal: #242424;
-    --sombra-sec: #3c3c3c;
-    --borde-negro: #FFFFFF50;
+        --negro: #000000;
+        --blanco: #bdbdbd;
+        --sombra-ppal: #242424;
+        --sombra-sec: #3c3c3c;
+        --borde-negro: #FFFFFF50;
     }
 }
 
@@ -42,11 +42,12 @@ body {
     font-family: var(--tipo-principal);
     font-size: 100%;
     line-height: 1.4em;
-    display: grid;    
+    display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     background-color: var(--blanco);
     color: var(--negro);
+    -webkit-hyphens: auto;
     hyphens: auto;
     font-smooth: always;
     -webkit-font-smoothing: antialiased;
@@ -56,9 +57,15 @@ body {
     align-items: center;
 }
 
-h1, h2, h3, h4, h5, h6, strong {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
     -webkit-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
     font-weight: inherit;
     font-size: inherit;
 }
@@ -98,7 +105,9 @@ li {
     list-style-type: none;
 }
 
-table, tr, td {
+table,
+tr,
+td {
     border-collapse: collapse;
     border-spacing: 0;
 }
@@ -117,11 +126,15 @@ img {
     color: var(--blanco);
 }
 
-form, input, textarea, select, button {
+form,
+input,
+textarea,
+select,
+button {
     font-family: inherit;
     font-size: inherit;
     -webkit-hyphens: auto;
-            hyphens: auto;
+    hyphens: auto;
     background-color: transparent;
     display: block;
 }
@@ -148,7 +161,8 @@ header {
 .nav-list li a {
     text-decoration: none;
     color: rgb(196, 61, 61);
-    font-size: 1.3rem; /* Tamaño de fuente por defecto para el menú */
+    font-size: 1.3rem;
+    /* Tamaño de fuente por defecto para el menú */
 }
 
 .abrir-menu,
@@ -214,6 +228,11 @@ section {
     cursor: pointer;
 }
 
+#product-list .product button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
 /* Footer Styles */
 footer {
     width: 100%;
@@ -241,7 +260,8 @@ footer {
     color: rgb(196, 61, 61);
 }
 
-.footer-section p, .footer-section ul {
+.footer-section p,
+.footer-section ul {
     font-size: 13px;
     line-height: 1.6;
 }
@@ -289,17 +309,22 @@ footer {
     .footer-section {
         flex-basis: 100%;
     }
+
     #product-list .product {
         flex-basis: calc(50% - 20px);
         max-width: calc(50% - 20px);
     }
+
     .nav-list li a {
-        font-size: 0.9rem; /* Tamaño de fuente para pantallas medianas */
+        font-size: 0.9rem;
+        /* Tamaño de fuente para pantallas medianas */
     }
 }
 
 @media screen and (max-width: 550px) {
-    .abrir-menu, .cerrar-menu {
+
+    .abrir-menu,
+    .cerrar-menu {
         display: block;
         border: 0;
         font-size: 1.25rem;
@@ -343,7 +368,8 @@ footer {
 
     .nav-list li a {
         color: rgb(196, 61, 61);
-        font-size: 0.8rem; /* Tamaño de fuente para pantallas pequeñas */
+        font-size: 0.8rem;
+        /* Tamaño de fuente para pantallas pequeñas */
     }
 
     #product-list .product {
@@ -359,7 +385,8 @@ footer {
     justify-content: space-between;
 }
 
-.sucursal-info, .sucursal-map {
+.sucursal-info,
+.sucursal-map {
     flex-basis: 48%;
     margin: 1%;
     box-sizing: border-box;
@@ -372,8 +399,10 @@ footer {
     border: 1px solid #292929;
 }
 
-.sucursal-info h1, .sucursal-info h2, .sucursal-info p {
-    margin: 10px ;
+.sucursal-info h1,
+.sucursal-info h2,
+.sucursal-info p {
+    margin: 10px;
 }
 
 @media (max-width: 768px) {
@@ -381,7 +410,8 @@ footer {
         flex-direction: column;
     }
 
-    .sucursal-info, .sucursal-map {
+    .sucursal-info,
+    .sucursal-map {
         flex-basis: 100%;
         margin: 0 0 20px 0;
     }
@@ -427,26 +457,32 @@ footer {
 }
 
 .carrousel .puntos {
-  width: 100%;
-  margin: 1em 0 0; 
-  padding: 0.4em;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    margin: 1em 0 0;
+    padding: 0.4em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .carrousel .punto {
-  width: 0.7em;
-  height: 0.7em;
-  margin: 1em 1em 0;
-  color: var(--negro);
-  transition: all 0.4s ease;
-  border-radius: 1em;
-  background-color: var(--blanco);
-  box-shadow: 0.6em 0.6em 1.1em var(--sombra-ppal), -0.6em -0.6em 1.1em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
+    width: 0.7em;
+    height: 0.7em;
+    margin: 1em 1em 0;
+    color: var(--negro);
+    transition: all 0.4s ease;
+    border-radius: 1em;
+    background-color: var(--blanco);
+    box-shadow: 0.6em 0.6em 1.1em var(--sombra-ppal), -0.6em -0.6em 1.1em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
 }
 
 .carrousel .punto.activo {
-  background-color: rgb(228, 228, 228);
+    background-color: rgb(207, 186, 186);
+}
+
+#carrito-icon {
+    width: 30px;
+    height: auto;
+
 }
