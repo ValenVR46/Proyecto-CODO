@@ -1,19 +1,19 @@
+// Manejo del menú de navegación
 const nav = document.querySelector("#nav");
 const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
 
 abrir.addEventListener("click", () => {
     nav.classList.add("visible");
-})
+});
 
 cerrar.addEventListener("click", () => {
     nav.classList.remove("visible");
-})
+});
 
-'use strict'
-
-const grande = document.querySelector('.grande')
-const punto = document.querySelectorAll('.punto')
+// Manejo del carrusel
+const grande = document.querySelector('.grande');
+const puntos = document.querySelectorAll('.punto');
 
 // Cuando CLICK en punto
 // Saber la posición de ese punto
@@ -21,68 +21,120 @@ const punto = document.querySelectorAll('.punto')
 // QUITAR la clase activo de TODOS puntos
 // AÑADIR la clase activo al punto que hemos hecho CLICK
 
-// Recorrer TODOS los punto
-punto.forEach((cadaPunto, i) => {
-    // Asignamos un CLICK a cadaPunto
-    punto[i].addEventListener('click', () => {
+// Recorrer TODOS los puntos
+puntos.forEach((punto, i) => {
+    punto.addEventListener('click', () => {
+        const posicion = i;
+        const desplazamiento = posicion * -100;
+        grande.style.transform = `translateX(${desplazamiento}%)`;
 
-        // Guardar la posición de ese PUNTO
-        let posicion = i
-        // Calculando el espacio que debe DESPLAZARSE el GRANDE
-        let operacion = posicion * -100 / 7;
-
-        // MOVEMOS el grand
-        grande.style.transform = `translateX(${operacion}%)`;
-
-        // Recorremos TODOS los punto
-        punto.forEach((cadaPunto, i) => {
-            // Quitamos la clase ACTIVO a TODOS los punto
-            punto[i].classList.remove('activo')
-        })
-        // Añadir la clase activo en el punto que hemos hecho CLICK
-        punto[i].classList.add('activo')
-
-    })
-})
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("El DOM ha sido cargado correctamente.");
-    function agregarAlCarrito(boton) {
-        console.log("Se ha hecho clic en el botón");
-        const producto = boton.closest('.product');
-        console.log("Contenedor del producto:", producto);
-        const nombre = producto.querySelector('h3').innerText;
-        const precio = producto.querySelector('p:last-of-type').innerText;
-        console.log("Nombre del producto:", nombre);
-        console.log("Precio del producto:", precio);
-
-        const nuevoItem = document.createElement('li');
-        nuevoItem.innerHTML = `
-            <span>Producto: ${nombre}</span>
-            <span>Cantidad: 1</span>
-            <span>Precio unitario: ${precio}</span>
-        `;
-        console.log("Nuevo item:", nuevoItem);
-
-        // Mover la declaración de carrito dentro de la función agregarAlCarrito
-        const carrito = document.getElementById('carrito');
-        console.log("Contenedor del carrito:", carrito);
-        if (!carrito) {
-            console.error("No se encontró el contenedor del carrito");
-            return;
-        }
-
-        const listaCarrito = carrito.querySelector('#carrito-lista');
-        listaCarrito.appendChild(nuevoItem);
-        localStorage.setItem('carrito', listaCarrito.innerHTML);
-
-    }
-
-
-    const botonesAgregar = document.querySelectorAll('.agregar-carrito');
-    botonesAgregar.forEach((boton) => {
-        boton.addEventListener('click', () => {
-            agregarAlCarrito(boton);
-        });
+        puntos.forEach(p => p.classList.remove('activo'));
+        punto.classList.add('activo');
     });
 });
+
+// Función para agregar un producto al carrito
+function addToCart(product) {
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    var existingProduct = cart.find(item => item.name === product.name);
+
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        product.quantity = 1;
+        cart.push(product);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Producto agregado al carrito");
+    updateCartSummary();
+}
+
+// Manejo de eventos de clic en los botones "Agregar al carrito"
+document.querySelectorAll(".agregar-carrito").forEach(button => {
+    button.addEventListener("click", function(e) {
+        e.stopPropagation();
+
+        var productElement = this.closest(".product");
+        var product = {
+            name: productElement.querySelector("h3").innerText,
+            price: parseFloat(productElement.querySelector("p").innerText.replace("Precio: ", "").replace("$", "")),
+            quantity: 1
+        };
+        addToCart(product);
+    });
+});
+
+// Función para mostrar los productos en el carrito
+function showCart() {
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+    var cartList = document.getElementById("carrito-lista");
+
+    cartList.innerHTML = "";
+
+    cart.forEach(product => {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = `
+            <span>Producto: ${product.name}</span>
+            <span>Cantidad: ${product.quantity}</span>
+            <span>Precio unitario: $${product.price.toFixed(2)}</span>
+            <button class="eliminar-producto" data-product-name="${product.name}">Eliminar</button>
+        `;
+        cartList.appendChild(listItem);
+    });
+
+    updateCartSummary();
+}
+
+// Función para actualizar el resumen del carrito
+function updateCartSummary() {
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+    var totalQuantity = 0;
+    var totalPrice = 0;
+
+    cart.forEach(product => {
+        totalQuantity += product.quantity;
+        totalPrice += product.price * product.quantity;
+    });
+
+    var summaryElement = document.getElementById("carrito-resumen");
+    if (summaryElement) {
+        summaryElement.innerHTML = `
+            <p>Total de productos: ${totalQuantity}</p>
+            <p>Total a pagar: $${totalPrice.toFixed(2)}</p>
+        `;
+    }
+}
+
+// Mostrar los productos en el carrito si estamos en la página del carrito
+if (document.getElementById("carrito-lista")) {
+    showCart();
+}
+
+// Función para eliminar un producto del carrito
+function removeFromCart(productName) {
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+    var updatedCart = cart.filter(product => product.name !== productName);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    showCart(); // Actualizar la vista del carrito después de eliminar un producto
+}
+
+// Manejo de eventos de clic en los botones "Eliminar" del carrito
+document.getElementById("carrito-lista").addEventListener("click", function(e) {
+    if (e.target && e.target.matches(".eliminar-producto")) {
+        var productName = e.target.dataset.productName;
+        removeFromCart(productName);
+    }
+});
+
+// Función para vaciar el carrito
+function clearCart() {
+    localStorage.removeItem("cart");
+    showCart(); // Actualizar la vista del carrito después de vaciarlo
+}
+
+// Manejo de eventos de clic en el botón "Vaciar carrito"
+document.getElementById("vaciar-carrito").addEventListener("click", clearCart);
+
+
