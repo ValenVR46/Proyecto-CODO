@@ -178,4 +178,24 @@ document.addEventListener("DOMContentLoaded", function () {
         showCart();
     }
 });
+// formulario contacto
+document.addEventListener('DOMContentLoaded', function () {
+    const formulario = document.querySelector('form');
+
+    formulario.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const datos = {
+            nombre: formulario.querySelector('#name').value,
+            correo: formulario.querySelector('#email').value,
+            mensaje: formulario.querySelector('#message').value
+        };
+
+        localStorage.setItem('datosFormulario', JSON.stringify(datos));
+        sessionStorage.setItem('datosFormulario', JSON.stringify(datos));
+        window.location.href = 'respuesta.html';
+    });
+});
+
+
 
