@@ -75,17 +75,17 @@ document.addEventListener("DOMContentLoaded", function () {
     function showCart() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let cartTableBody = document.querySelector("#carrito-tabla tbody");
-
+    
         cartTableBody.innerHTML = "";
 
         let totalQuantity = 0;
         let totalPrice = 0;
-
+    
         cart.forEach((product) => {
             let price = product.price != null ? product.price : 0;
             let subtotal = price * product.quantity;
             let row = document.createElement("tr");
-
+    
             row.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.quantity}</td>
@@ -96,11 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 </td>
             `;
             cartTableBody.appendChild(row);
-
+    
             totalQuantity += product.quantity;
             totalPrice += subtotal;
         });
-
+    
         // Eliminar filas existentes con información de totales
         let totalRows = cartTableBody.querySelectorAll(".total-row");
         totalRows.forEach(row => row.remove());
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td colspan="2">${totalQuantity}</td>
         `;
         cartTableBody.appendChild(totalRow);
-
+    
         // Agregar fila con total a pagar
         let totalPriceRow = document.createElement("tr");
         totalPriceRow.classList.add("total-row");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td colspan="2">$${totalPrice.toFixed(2)}</td>
         `;
         cartTableBody.appendChild(totalPriceRow);
-
+    
         updateCartSummary();
     }
 
