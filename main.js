@@ -56,9 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let productElement = this.closest(".product");
             let priceText = productElement
-                .querySelector("p:last-of-type")
-                .innerText.replace("Precio: $", "")
-                .replace(/\./g, "");
+            .querySelector("p:last-of-type")
+            .innerText.replace("Precio: $", "")
+            .replace(/\./g, "");
             let price = parseFloat(priceText);
             if (isNaN(price)) {
                 price = 0;
@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
             row.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.quantity}</td>
-                <td>$${price.toFixed(2)}</td>
-                <td>$${subtotal.toFixed(2)}</td>
+                <td>${formatCurrency(price)}</td>
+                <td>${formatCurrency(subtotal)}</td>
                 <td>
                     <button class="eliminar-producto" data-product-name="${product.name}">Eliminar</button>
                 </td>
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         totalPriceRow.classList.add("total-row");
         totalPriceRow.innerHTML = `
             <td colspan="3" style="text-align: right;"><strong>Total a pagar:</strong></td>
-            <td colspan="2">$${totalPrice.toFixed(2)}</td>
+            <td colspan="2">${formatCurrency(totalPrice)}</td>
         `;
         cartTableBody.appendChild(totalPriceRow);
 
@@ -142,9 +142,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (summaryElement) {
             summaryElement.innerHTML = `
                 <p>Total de productos: ${totalQuantity}</p>
-                <p>Total a pagar: $${totalPrice.toFixed(2)}</p>
+                <p>Total a pagar: ${formatCurrency(totalPrice)}</p>
             `;
         }
+    }
+
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('es-AR', {
+            style: 'currency',
+            currency: 'ARS'
+        }).format(value);
     }
 
     let carritoTabla = document.getElementById("carrito-tabla");
@@ -178,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showCart();
     }
 });
+
 // formulario contacto
 document.addEventListener('DOMContentLoaded', function () {
     const formulario = document.querySelector('form');
@@ -196,6 +204,8 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'respuesta.html';
     });
 });
+
+
 
 
 

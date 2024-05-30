@@ -238,8 +238,8 @@ section {
 #product-list .product button {
     margin-top: auto;
     margin-bottom: 10px;
-    background-color: #524e4e;
-    color: #fff;
+    background-color: rgb(0, 0, 0);
+    color: rgb(196, 61, 61);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -247,7 +247,8 @@ section {
 }
 
 #product-list .product button:hover {
-    background-color: #827777;
+    background-color: rgb(196, 61, 61);
+    color: rgb(194, 192, 192);
 }
 
 #product-list .product button:active {
@@ -637,14 +638,15 @@ footer {
 #contact form button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: rgb(0, 0, 0);
+    color: rgb(196, 61, 61);
     border: none;
     cursor: pointer;
 }
 
 #contact form button:hover {
-    background-color: #37e83d;
+    background-color: rgb(196, 61, 61);
+    color: rgb(194, 192, 192);
 }
 
 #contact form button:active {
