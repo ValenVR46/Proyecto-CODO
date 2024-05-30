@@ -518,14 +518,14 @@ footer {
 
 
 #carrito-tabla {
-    width: 50%;
+    width: 90%;
 }
 
 /* Ajustes en las celdas de la tabla */
 #carrito-tabla th,
 #carrito-tabla td {
-    padding: 12px;
-    text-align: center;
+    padding: 5px;
+    text-align: left;
 }
 
 
@@ -540,10 +540,27 @@ footer {
     text-align: right;
 }
 
+.eliminar-producto {
+    display: flex;
+    width: fit-content;
+    
+    background-color: #100202; /* Color de fondo rojo */
+    color: rgb(196, 61, 61); /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 8px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
 
+.eliminar-producto:hover {
+    background-color: #ff1a1a; /* Color de fondo más oscuro al pasar el cursor */
+    color: rgb(194, 192, 192);
+
+}
 
 #carrito .eliminar {
-    background-color: #ff4d4d;
+    background-color: #100202;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -556,16 +573,14 @@ footer {
 }
 
 .vaciar-carrito-container {
-
     margin-top: 20px;
-
 }
 
 #vaciar-carrito {
     display: block;
     width: fit-content;
-    background-color: #ff4d4d;
-    color: #fff;
+    background-color: rgb(0, 0, 0);
+    color: rgb(196, 61, 61);
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
@@ -575,7 +590,8 @@ footer {
 }
 
 #vaciar-carrito:hover {
-    background-color: #e60000;
+    background-color: rgb(196, 61, 61);
+    color: rgb(194, 192, 192);
 }
 
 #vaciar-carrito:active {
